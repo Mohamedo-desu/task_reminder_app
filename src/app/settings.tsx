@@ -81,6 +81,7 @@ const SettingsScreen = () => {
         styles.scrollContent,
         { paddingBottom: insets.bottom + 24 },
       ]}
+      showsVerticalScrollIndicator={false}
     >
       <View style={styles.screen}>
         <View style={styles.themeCard(theme)}>

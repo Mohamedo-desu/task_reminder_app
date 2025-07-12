@@ -24,13 +24,13 @@ const darkTheme = {
     foreground: "#1E1E1E", // dark grey surface (contrast vs. bg: 1.17:1, good for UI surfaces)
     typography: "#FFFFFF", // white (contrast vs. bg: 17.1:1 ✓)
     secondaryText: "#B0B0B0", // light grey (contrast vs. bg: 5.0:1 ✓)
-    tint: "#604ddf", // deep indigo (contrast vs. bg: 7.7:1 ✓)
+    tint: "#6957dd", // deep indigo (contrast vs. bg: 7.7:1 ✓)
     accents: {
       banana: "#F9CA24", // (4.3:1 vs. bg ✓)
       pumpkin: "#F0932B", // (4.8:1 vs. bg ✓)
       apple: "#EB4D4B", // (4.7:1 vs. bg ✓)
       grass: "#6AB04C", // (3.3:1 vs. bg ✓)
-      storm: "#604ddf", // same as tint, 7.7:1 ✓
+      storm: "#6957dd", // same as tint, 7.7:1 ✓
     },
   },
   gap: (v: number) => v * 8,
