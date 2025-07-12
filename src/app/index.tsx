@@ -3,11 +3,14 @@ import Color from "color";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { router } from "expo-router";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  BackHandler,
   FlatList,
+  Platform,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -17,14 +20,13 @@ import { useTaskStore } from "../store/useTaskStore";
 dayjs.extend(customParseFormat);
 
 const ICON_SIZE = 24;
-const PIN_ICON_SIZE = 20;
 const CREATE_BTN_ICON_SIZE = 20;
 const SEARCH_ICON_SIZE = 20;
-const GAP = 12;
 
 export default function TaskListScreen() {
   const { theme } = useUnistyles();
   const { bottom } = useSafeAreaInsets();
+  const [lastBackPress, setLastBackPress] = useState(0);
 
   const rawTasks = useTaskStore((s) => s.tasks);
   const deleteTask = useTaskStore((state) => state.deleteTask);
@@ -79,7 +81,6 @@ export default function TaskListScreen() {
                   styles.pinBtn(theme),
                   { backgroundColor: backgroundTint },
                 ]}
-                onPress={() => togglePin(item.id)}
                 accessibilityRole="button"
                 accessibilityLabel={item.isPinned ? "Unpin task" : "Pin task"}
                 activeOpacity={0.8}
@@ -123,6 +124,26 @@ export default function TaskListScreen() {
     ),
     [theme, ACCENT_ICONS, backgroundTint, togglePin, deleteTask]
   );
+
+  // Add back button handler
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      () => {
+        const currentTime = new Date().getTime();
+        if (currentTime - lastBackPress < 2000) {
+          BackHandler.exitApp();
+          return true;
+        }
+        if (Platform.OS === "android") {
+          ToastAndroid.show("Press back again to exit", ToastAndroid.SHORT);
+        }
+        setLastBackPress(currentTime);
+        return true;
+      }
+    );
+    return () => backHandler.remove();
+  }, [lastBackPress]);
 
   return (
     <View style={styles.container(theme)}>

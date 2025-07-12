@@ -82,10 +82,7 @@ const DateTimeButton = ({
 }) => (
   <TouchableOpacity
     onPress={onPress}
-    style={[
-      styles.dateTimeButton(theme),
-      { flexDirection: "row", alignItems: "center", gap: 8 },
-    ]}
+    style={styles.dateTimeButton(theme)}
     activeOpacity={0.8}
   >
     <MaterialCommunityIcons
@@ -105,7 +102,7 @@ const DateTimeButton = ({
     <Text
       style={{
         color: theme.colors.tint,
-        marginLeft: "auto",
+        marginLeft: 5,
         fontWeight: "600",
         fontSize: 12,
       }}
@@ -214,6 +211,8 @@ const CreateNoteScreen = () => {
           value={title}
           onChangeText={setTitle}
           cursorColor={theme.colors.tint}
+          autoCorrect
+          autoCapitalize="sentences"
         />
         <Text style={styles.label(theme)}>Description</Text>
         <TextInput
@@ -230,6 +229,8 @@ const CreateNoteScreen = () => {
           numberOfLines={4}
           cursorColor={theme.colors.tint}
           textAlignVertical="top"
+          autoCorrect
+          autoCapitalize="sentences"
         />
       </View>
 
@@ -348,6 +349,9 @@ const styles = StyleSheet.create({
   }),
   dateTimeButton: (theme: any) => ({
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
     backgroundColor: theme.colors.foreground,
     borderRadius: theme.gap(0.7),
     paddingVertical: theme.gap(1.1),

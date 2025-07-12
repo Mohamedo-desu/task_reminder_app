@@ -4,11 +4,19 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
-    "lint": "expo lint"
+    "build:android": "eas build --platform android --profile preview",
+    "offline": "expo start --offline",
+    "publish:expo": "eas update --branch preview",
+    "build:web": "npx expo export --platform web",
+    "release:web": "eas deploy --prod",
+    "upgrade": "bun install expo@latest && bunx expo install --fix",
+    "android": "bunx expo run:android --device --variant debug",
+    "release:android": "bunx expo run:android --device --variant Release",
+    "release:ios": "bunx expo run:ios --configuration Release",
+    "test": "jest --watchAll",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
