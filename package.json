@@ -16,6 +16,7 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
+    "babel-plugin-react-compiler": "^19.0.0-beta-af1b7da-20250417",
     "color": "^5.0.0",
     "dayjs": "^1.11.13",
     "eas-build-cache-provider": "^16.4.2",

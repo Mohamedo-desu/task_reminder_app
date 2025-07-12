@@ -90,14 +90,14 @@ const DateTimeButton = ({
   >
     <MaterialCommunityIcons
       name={iconName}
-      size={20}
+      size={18}
       color={theme.colors.tint}
     />
     <Text
       style={{
         color: theme.colors.typography,
         fontWeight: "500",
-        fontSize: 15,
+        fontSize: 12,
       }}
     >
       {label}
@@ -107,7 +107,7 @@ const DateTimeButton = ({
         color: theme.colors.tint,
         marginLeft: "auto",
         fontWeight: "600",
-        fontSize: 15,
+        fontSize: 12,
       }}
     >
       {value}
