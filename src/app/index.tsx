@@ -285,9 +285,6 @@ const styles = StyleSheet.create({
     paddingVertical: theme.gap(0.25),
     borderRadius: theme.gap(0.625),
   }),
-  pinIcon: {
-    marginRight: 4,
-  },
   pinText: {
     fontSize: 12,
     fontWeight: "400",

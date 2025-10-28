@@ -91,21 +91,22 @@ const DateTimeButton = ({
       color={theme.colors.tint}
     />
     <Text
-      style={{
-        color: theme.colors.typography,
-        fontWeight: "500",
-        fontSize: 12,
-      }}
+      style={[
+        styles.myStyle1,
+        {
+          color: theme.colors.typography,
+        },
+      ]}
     >
       {label}
     </Text>
     <Text
-      style={{
-        color: theme.colors.tint,
-        marginLeft: 5,
-        fontWeight: "600",
-        fontSize: 12,
-      }}
+      style={[
+        styles.myStyle2,
+        {
+          color: theme.colors.tint,
+        },
+      ]}
     >
       {value}
     </Text>
@@ -178,24 +179,19 @@ const CreateNoteScreen = () => {
           headerRight: () => (
             <TouchableOpacity
               onPress={handleSave}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                backgroundColor: theme.colors.tint,
-                paddingVertical: 5,
-                paddingHorizontal: 10,
-                borderRadius: 50,
-                gap: 5,
-              }}
+              style={[
+                styles.myStyle3,
+                {
+                  backgroundColor: theme.colors.tint,
+                },
+              ]}
             >
               <MaterialCommunityIcons
                 name="content-save"
                 size={18}
                 color="white"
               />
-              <Text style={{ fontSize: 14, fontWeight: "500", color: "white" }}>
-                Save
-              </Text>
+              <Text style={styles.myStyle4}>Save</Text>
             </TouchableOpacity>
           ),
         }}
@@ -266,11 +262,13 @@ const CreateNoteScreen = () => {
       <View style={styles.card(theme)}>
         <Text style={styles.label(theme)}>⏰ Schedule</Text>
         <View
-          style={{
-            flexDirection: "row",
-            gap: theme.gap(1),
-            marginTop: theme.gap(0.5),
-          }}
+          style={[
+            styles.myStyle7,
+            {
+              gap: theme.gap(1),
+              marginTop: theme.gap(0.5),
+            },
+          ]}
         >
           <DateTimeButton
             iconName="calendar"
@@ -310,6 +308,31 @@ const styles = StyleSheet.create({
     padding: theme.gap(2),
     gap: theme.gap(2),
   }),
+  myStyle1: {
+    fontSize: 12,
+    fontWeight: "500",
+  },
+  myStyle2: {
+    fontSize: 12,
+    fontWeight: "600",
+    marginLeft: 5,
+  },
+  myStyle3: {
+    alignItems: "center",
+    borderRadius: 50,
+    flexDirection: "row",
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  myStyle4: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  myStyle7: {
+    flexDirection: "row",
+  },
   card: (theme: any) => ({
     backgroundColor: theme.colors.background,
     borderRadius: theme.gap(1),
